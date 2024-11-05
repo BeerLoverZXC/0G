@@ -4,8 +4,6 @@ RUN apt-get update && \
 apt-get upgrade -y && \
 apt-get install curl git wget htop tmux build-essential jq make lz4 gcc unzip -y
 
-
-
 ENV HOME=/app
 
 WORKDIR /app
@@ -57,11 +55,7 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"1000\"/" $HOME/.0
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"10\"/" $HOME/.0gchain/config/app.toml && \
 sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0ua0gi"|g' $HOME/.0gchain/config/app.toml && \
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.0gchain/config/config.toml && \
-sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.0gchain/config/config.toml && \
-
-
-
-
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.0gchain/config/config.toml
 
 RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
     echo 'sleep 10000' >> /app/entrypoint.sh && \
