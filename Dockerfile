@@ -44,7 +44,7 @@ sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0ua0gi"|g' $HOME/.0gchain
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.0gchain/config/config.toml && \
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.0gchain/config/config.toml
 
-RUN RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
+RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
     echo 'if [ "$MODE" = "debug" ]; then' >> /app/entrypoint.sh && \
     echo '    echo "Debug mode enabled. Sleeping...";' >> /app/entrypoint.sh && \
     echo '    sleep 10000;' >> /app/entrypoint.sh && \
