@@ -1,0 +1,18 @@
+services:
+  node-0g:
+    build: .
+    container_name: 0g-node
+    environment:
+      - MODE=default # default/debug
+    ports:
+      - "10657:26657"
+      - "10656:10656"
+      - "26660:26660"
+    restart: unless-stopped
+    volumes:
+      - 0g_volume:/app/.0gchain
+      - 0g_bin:/app/go
+
+volumes:
+  0g_volume:
+  0g_bin:
